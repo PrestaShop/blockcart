@@ -65,16 +65,16 @@ class BlockCart extends Module
 			$nbTotalProducts += (int)$product['cart_quantity'];
 		$cart_rules = $params['cart']->getCartRules();
 
-		if (empty($cart_rules)) {
+		if (empty($cart_rules))
 			$base_shipping = $params['cart']->getOrderTotal($useTax, Cart::ONLY_SHIPPING);
-		} else {
+		else
+		{
 			$base_shipping_with_tax    = $params['cart']->getOrderTotal(true, Cart::ONLY_SHIPPING);
 			$base_shipping_without_tax = $params['cart']->getOrderTotal(false, Cart::ONLY_SHIPPING);
-			if ($useTax) {
+			if ($useTax)
 				$base_shipping = $base_shipping_with_tax;
-			} else {
+			else
 				$base_shipping = $base_shipping_without_tax;
-			}
 		}
 		$shipping_cost = Tools::displayPrice($base_shipping, $currency);
 		$shipping_cost_float = Tools::convertPrice($base_shipping, $currency);
