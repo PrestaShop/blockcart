@@ -572,7 +572,7 @@ var ajaxCart = {
 			if (customizationId)
 			{
 				$('#uploadable_files li div.customizationUploadBrowse img').remove();
-				$('#text_fields input').attr('value', '');
+				$('#text_fields textarea').val('');
 			}
 		});
 
