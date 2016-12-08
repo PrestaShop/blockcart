@@ -30,21 +30,23 @@ $(document).ready(function () {
 
     prestashop.on('cart updated', function (event) {
         var refreshURL = $('.blockcart').data('refresh-url');
-        var requestData = {};
+        if(typeof refreshURL !== 'undefined') {
+          var requestData = {};
 
-        if (event && event.reason) {
-            requestData = {
-                id_product_attribute: event.reason.idProductAttribute,
-                id_product: event.reason.idProduct,
-                action: event.reason.linkAction
-            };
+          if (event && event.reason) {
+              requestData = {
+                  id_product_attribute: event.reason.idProductAttribute,
+                  id_product: event.reason.idProduct,
+                  action: event.reason.linkAction
+              };
+          }
+
+          $.post(refreshURL, requestData).then(function (resp) {
+              $('.blockcart').replaceWith(resp.preview);
+              if (resp.modal) {
+                  showModal(resp.modal);
+              }
+          });
         }
-
-        $.post(refreshURL, requestData).then(function (resp) {
-            $('.blockcart').replaceWith(resp.preview);
-            if (resp.modal) {
-                showModal(resp.modal);
-            }
-        });
     });
 });
