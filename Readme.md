@@ -10,4 +10,4 @@ It has been remade for PrestaShop 1.7: https://github.com/PrestaShop/ps_shopping
 
 ## About
 
-Adds a block containing the customer\'s shopping cart in PrestaShop 1.6.
+Adds a block containing the customer's shopping cart in PrestaShop 1.6.
